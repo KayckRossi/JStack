@@ -1,0 +1,109 @@
+O que é uma Api Rest ?
+Application Programming interface
+
+Api Rest ela permite que conecte varias aplicações de diferentes tipos
+usando uma mesma fonte de dados
+
+Protocolo http 
+Hypertext Transfer Protocol
+
+Protocolo http é basicamente uma troca de informações entre duas pontas
+-> De um lado o cliente que pode ser um aplicativo web/mobile ou qualquer coisa que consiga fazer
+uma requisição http.
+
+Então de primeira fazemos o request/requisição para um servidor -
+ <--- então o servidor manda uma response - respondendo o que foi pedido.
+
+-Request- 
+-------------------------------------------------------------------------------------------|
+      http                                                                                 |
+  ---------------------------------------------------------------------------------|       |
+  URL/endpoint --->identificação de recursos                                               |
+  query Params --->Parametros na URl - Parametros adicionais que colocamos na URl          |
+    Metodo     --->identificação de ação de recursos                                       |
+    Header     --->informações adicionais entre cliente e servidor                         |
+    body       --->Corpo da mensagem                                                       |
+                                                                                           |
+    http://mywebsite.com/products?page=3&orderby=name                                      |
+              |              |              |                                              |
+            (URl)        (endpoint)    (Query params)                                      |
+-->Principais metodos:                                                                     |
+    *Get:consulta de dados;                                                                |
+    *Post:criação de registros;                                                            |
+    *Put:alteração de registros;                                                           |
+    *Delete:Deleção de registros;                                                          |
+                                                                                           |
+--> Header:                                                                                |
+Usados para trocar informações adicionais                                                  |
+entre cliente e server;                                                                    |
+                                                                                           |
+Existem headers pré definidos porém podemos criar                                          |
+headers personalizados;                                                                    |
+                                                                                           |
+  *Nome e valor separdos por dois pontos:                                                  |
+    nome do header->Content-Type: application/json;                                        |
+                      |                     |                                              |
+      (identificação da informação      (Valor do Content-Type)                            |
+      enviada dentro da request)                                                           |
+                                                                                           |
+    header customizado(sempe começa com a letra "X"):                                      |
+    X-org-id:1123                                                                          |
+                                                                                           |
+-->Body:                                                                                   |
+Apenas requisições com metodos do tipo Post e PUT.                                         |
+                                                                                           |
+Os formatos enviados do Body são em Json.                                                  |
+-------------------------------------------------------------------------------------------|
+
+-Response-
+-------------------------------------------------------------------------------------------|
+      http                                                                                 |
+---------------------------------------------------------------------------------------    |
+    Header -->Usados para trocar informações adicionais entre cliente e server;            |
+    Content-Type --> Tipo de conteudo da resposta; normalmente (text/html/Json);                |
+    Status Code --> Indica o que aconteceu com a request;                                  |
+    body --> Dados que foram requisitados;                                                 |
+                                                                                           |
+  -->Codigo de Status:                                                                     |
+  Categorizados pelo primeiro digito:                                                      |
+  *De 100-199:Respota de informação;                                                       |
+  *De 200-299:Resposta de sucesso;                                                         |
+  *De 300-399:Redirecionametos;                                                            |
+  *De 400-499:Erros de clientes;                                                           |
+  *De 500-599:Erros do servidor;                                                           |
+                                                                                           |
+  -->Principais códigos:                                                                   |
+  *200:Ok;                                                                                 |
+  *201:Created;                                                                            |
+  *204:No Content;                                                                         |
+  *400:Bad Request;                                                                        |
+  *401/403:Unauthorized;                                                                   |
+  *404:Not Found;                                                                          |
+  *405:Method Not Allowed;                                                                 |
+  *409:Conflict;                                                                           |
+  *500:Internal Server Error;                                                              |
+-------------------------------------------------------------------------------------------|
+
+-Padrão Rest-
+-->Um padrão para a construção de APIs;
+-->Uso o Proticolo Http;
+-->Retorna uma represenação de um estado;(Vem montado em uma estrutura em Json)
+
+ Criando servidor--------------------------------------------------------|                     
+                                                                         |
+const http = require('http');                                            |
+                                                                         |
+const server = http.createServer((request, Response)=> {                 |
+    Response.writeHead(200, {'Content-Type': 'text/html'});              |
+                                                                         |
+    Response.end("<h1>Hello word</h1><h2>Salve</h2>");                   |
+}                                                                        |
+);                                                                       |
+                                                                         |
+rodando server                                                           |
+server.listen(3000, function(){                                          |
+    console.log("server started at http://localhost:3000");              |
+});                                                                      |
+-------------------------------------------------------------------------|
+
+Json.stringify => para converter array e objeto em strings

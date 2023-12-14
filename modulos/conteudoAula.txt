@@ -1,0 +1,71 @@
+
+O que é Node.js ?
+
+Plataforma que permite rodar o javascript no servidor 
+
+Call stack 
+É a pilha de processamento do nosso codigo-> Todas nossas funções vão para essa pilha 
+
+Single Thread 
+apenas uma Call stack
+-----------------------------------------------------
+
+O que são os modulos?
+São conjuntos de codigos (Que consiguimos ou não reutulizar)
+
+3 Tipos de modulos:
+
+---> TODOS OS ARQUIVOS NO JAVASCRIPT SÃO MODULOS;
+---> NATIVOS : Já são nativos do Node;
+---> NPM (NODE PACKAGE MANENGER);(É usado para publicar todos os modulos que criamos no Node)
+
+|------ver o console.log no terminal------|
+|            node index.js                |
+|-----------------------------------------|
+
+-->Função require= É usada para importar todos os modulos que criamos no Node;
+
+const printName = require("./printName") passa o nomme do modulo dentro do parametro require e salva em uma constante) 
+quando for passar um modulo nativo do node é preciso apenas colocar o nome do modulo direto
+---> serve para fazer as importações de function 
+
+function printName (name){
+    console.log(name);
+}
+
+module.exports = printName; ---> serve para fazer a importação de um modulo
+
+o "module.exports" pode passar qualquer tipo de dados |
+ex: uma variavel, uma array, uma function ou um objeto|
+
+--> Forma para exportar mais de um dado------|
+        function printName (name){           |
+            console.log(name);               |
+        }                                    |
+                                             |
+const modulo = require('.//printName')       |                                           |
+module.exports = { printName, lastName };    |                                           
+modulo.printName(`Kayck ${modulo.lastName}`);|
+---------------------------------------------|
+Dessa primeira forma é necessario declarar primeiro as variavel e depois fazer as importações.
+
+-->Segunda forma de fazer exportação         |
+    exports.printName = function (name) {    |
+    console.log(name);                       |
+}                                            |
+                                             |
+exports.lastName = "Rossi";                  |
+---------------------------------------------|
+Dessa maneira a exportação é feita direto sem precisar declarar primeiro uma variavel
+
+//Modulo Nativos
+
+const os = require('os');
+
+console.log(os.type());
+|-----------------------------------------------------|
+
+QueryParms 
+
+|-----------------------------------------------------|
+

@@ -1,0 +1,4 @@
+Declarativo | Imperativo 
+
+Declarativo -> Descreve o que quer 
+Imperativo -> Descreve como deve ser feito
